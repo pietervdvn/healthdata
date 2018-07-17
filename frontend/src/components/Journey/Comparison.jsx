@@ -17,10 +17,14 @@ class Comparison extends React.Component {
 
     }
     fillList() {
-        for (let i = 0; i < 100; i++) {
-            const r = Math.floor(Math.random()*100)+1;
-            this.state.listOfDummies.push(<Dummy value={r < 5 ? true: false} className="test" />);
+        for (let j = 0; j < 5; j++) {
+            this.state.listOfDummies.push(new Array());
+            for (let i = 0; i < 20; i++) {
+                const r = Math.floor(Math.random() * 100) + 1;
+                this.state.listOfDummies[j].push(<Dummy key={i + "" + j} value={r < 5 ? true : false} />);
+            }
         }
+        console.log(this.state.listOfDummies)
     }
     render() {
         return (
@@ -29,8 +33,19 @@ class Comparison extends React.Component {
                 <div className="journey_content">
                     Comparison
                     <br />
-                    {this.state.listOfDummies}
+                    {
+                        this.state.listOfDummies.map(function (list) {
+                            let iterationOfDummies = new Array();
+                            for (let i = 0; i < list.length; i++) {
+                                iterationOfDummies.push(list[i]);
+                            }
+                            iterationOfDummies.push(<br />);
+                            return iterationOfDummies;
+                        })
+                    }
+
                     <br />
+
                     <Link to="/journey/map">Continue</Link>
                 </div>
                 <Footer />
@@ -49,7 +64,7 @@ class Dummy extends React.Component {
     }
     render() {
         return (
-            <i class="fa fa-male" style={{ color: this.state.isRed ? "red": "black", padding: "0.5em" }}> </i>
+            <i className="fa fa-male" style={{ color: this.state.isRed ? "red" : "black", padding: "0.5em" }}> </i>
         );
     }
 }
