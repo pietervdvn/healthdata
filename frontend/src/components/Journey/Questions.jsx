@@ -78,7 +78,7 @@ class Questions extends React.Component {
 
                 {/* <input type="text" placeholder="Province" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} /> */}
                 <p>
-                  <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">
+                  <Link id="test_link" style={{ display: "none" }} to="/journey/persona">
                     Start your journey <i className="fa fa-angle-right bold"></i>
                   </Link>
                 </p>
