@@ -3,18 +3,37 @@ import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Footer from '../Footer'
 
-
+import '../../assets/css/journey/main.css';
 
 const Home = () => (
 
   <div>
     <Navbar />
 
-    {/* will make homepage better later on, but nav is in the way atm so that's why br */}
-    <br/><br/>
-    <Link to="/explorer">Explorer</Link><br/>
-    <Link to="/journey/questions">Journey</Link>
-    <Footer/>    
+    <div className="flex-container">
+      <div className="mainLeft">
+        <div className="mainJourney">
+          <h1>You are not alone</h1>
+          <p>
+            Get insights into cancer and depression in Belgium,
+            and compare them yourself to the public.
+          </p>
+          <Link to="/journey/questions">Take me on a journey 	<i className="fa fa-angle-right" style={{ fontWeight: "bold" }} ></i></Link>
+        </div>
+        <div className="mainExplorer">
+          <h1>Get insights in Belgian hospital data</h1>
+          <p>
+            Get insights into data from all Belgian hospitals.
+          </p>
+          <Link to="/explorer">Explore on my own <i className="fa fa-angle-right" style={{ fontWeight: "bold" }} ></i></Link><br />
+        </div>
+
+      </div>
+      <div className="mainRight">
+        Img will come here
+      </div>
+    </div>
+    <Footer />
   </div>
 );
 

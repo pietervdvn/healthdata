@@ -21,7 +21,7 @@ class Questions extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="journey_content">
+        <div>
           People will be going on a journey here.
           <br />
           Question 1: <input type="text" id="inp1" onChange={(event) => this.updateVal1(event.target.value)} />
