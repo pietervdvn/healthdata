@@ -24,20 +24,19 @@ class Questions extends React.Component {
           <div className="questionsLeft">
             <div className="questionsContent">
               <h1>Hi there!</h1>
-              <p>
+              <p className="questionsExplenation">
                 Before we start, we just need you to fill in some simple questions.
-              <br />
                 Don't worry,
               <span className="red bold"> this won't take long! </span>
-                <br />
+                
                 And it will make the journey much more personal ;)
             </p>
-              <div className="flex-container">
+              <div className="flex-container firsttwoQuestions">
                 <div>
                   <div>
                     <label htmlFor="inp1">What's your age?</label>
                     <br />
-                    <input type="number" id="inp1" min="1" max="120" placeholder="Age" onChange={(event) => this.updateVal1(event.target.value)} />
+                    <input type="number" id="inp1" min="1" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
                   </div>
                 </div>
                 <div>
@@ -45,7 +44,8 @@ class Questions extends React.Component {
                     What's your gender?
                   </label>
                   <br />
-                  <select id="inp2" placeholder="Gender" onChange={(event) => this.updateVal2(event.target.value)}>
+                  <select id="inp2" onChange={(event) => this.updateVal2(event.target.value)}>
+                  <option disabled selected value></option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="null">I'd rather not say</option>
@@ -59,7 +59,8 @@ class Questions extends React.Component {
                 <br />
 
 
-                  <select placeholder="Province" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
+                  <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
+                    <option disabled selected value></option>
                     <option value="antwerp">Antwerp</option>
                     <option value="eastflanders">East Flanders</option>
                     <option value="flemishbrabant">Flemish Brabant</option>

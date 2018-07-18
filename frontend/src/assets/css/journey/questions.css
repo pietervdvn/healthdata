@@ -16,7 +16,9 @@
 }
 
 .questionsContent {
-    padding: 5em;
+    /* padding: 5em 10em 5em 10em; */
+    max-width: 25em;
+    margin: auto auto;
 }
 
 .questionsContent a {
@@ -42,7 +44,7 @@
 }
 
 input, select {
-    width: 98%;
+    width: 60%;
     border: none;
     border-bottom: solid 2px #ff6464;
     font-size: 1em;
@@ -55,76 +57,14 @@ select {
     top: 1.2px;
 }
 
-
-.thirdQuestion {
-    width: 100%;
+.thirdQuestion, .firsttwoQuestions {
+    padding-top: 3em;
 }
 
+.thirdQuestion select {
+    width: 80%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.custom-select {
-    position: relative;
-    font-family: Arial;
-  }
-  .custom-select select {
-    display: none; /*hide original SELECT element:*/
-  }
-  .select-selected {
-    background-color: DodgerBlue;
-  }
-  /*style the arrow inside the select element:*/
-  .select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
-  }
-  /*point the arrow upwards when the select box is open (active):*/
-  .select-selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
-  }
-  /*style the items (options), including the selected item:*/
-  .select-items div,.select-selected {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-    user-select: none;
-  }
-  /*style items (options):*/
-  .select-items {
-    position: absolute;
-    background-color: DodgerBlue;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-  }
-  /*hide the items when the select box is closed:*/
-  .select-hide {
-    display: none;
-  }
-  .select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+.questionsExplenation{
+    text-align: justify;
+}
