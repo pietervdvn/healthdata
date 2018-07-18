@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../assets/css/journey/questions.css';
-
 import { Link } from 'react-router-dom';
 
 import Navbar from '../Navbar';
@@ -28,9 +27,9 @@ class Questions extends React.Component {
               <p>
                 Before we start, we just need you to fill in some simple questions.
               <br />
-                Don't worry, 
+                Don't worry,
               <span className="red bold"> this won't take long! </span>
-              <br/> 
+                <br />
                 And it will make the journey much more personal ;)
             </p>
               <div className="flex-container">
@@ -38,7 +37,7 @@ class Questions extends React.Component {
                   <div>
                     <label htmlFor="inp1">What's your age?</label>
                     <br />
-                    <input type="number" id="inp1" min="1" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
+                    <input type="number" id="inp1" min="1" max="120" placeholder="Age" onChange={(event) => this.updateVal1(event.target.value)} />
                   </div>
                 </div>
                 <div>
@@ -46,7 +45,11 @@ class Questions extends React.Component {
                     What's your gender?
                   </label>
                   <br />
-                  <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
+                  <select id="inp2" placeholder="Gender" onChange={(event) => this.updateVal2(event.target.value)}>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="null">I'd rather not say</option>
+                  </select>
                 </div>
               </div>
               <div className="thirdQuestion">
@@ -54,12 +57,29 @@ class Questions extends React.Component {
                   In what province do you live?
                     </label>
                 <br />
-                <input type="text" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} />
 
+
+                  <select placeholder="Province" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
+                    <option value="antwerp">Antwerp</option>
+                    <option value="eastflanders">East Flanders</option>
+                    <option value="flemishbrabant">Flemish Brabant</option>
+                    <option value="limburg">Limburg</option>
+                    <option value="westflanders">West Fladers</option>
+                    <option value="liege">Liege</option>
+                    <option value="hainaut">Hainaut</option>
+                    <option value="luxembourg">Luxembourg</option>
+                    <option value="Namur">Namur</option>
+                    <option value="Walloon Brabant">Walloon Brabant</option>
+
+                  </select>
+
+
+
+                {/* <input type="text" placeholder="Province" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} /> */}
                 <p>
                   <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">
                     Start your journey <i className="fa fa-angle-right bold"></i>
-                    </Link>
+                  </Link>
                 </p>
 
               </div>
@@ -100,6 +120,7 @@ class Questions extends React.Component {
     else
       document.getElementById("test_link").style.display = "none";
   }
+
 
 }
 
