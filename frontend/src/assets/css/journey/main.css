@@ -1,14 +1,5 @@
-.flex-container {
-    display: flex;
-    background-color: DodgerBlue;
-}
-
-.flex-container>div {
-    width: 100%;
-}
-
 .mainLeft, .mainRight {
-    height: calc(100vh - 3.8em) ;
+    height: calc(100vh - 3.8em);
 }
 
 .mainExplorer, .mainJourney {
@@ -47,7 +38,7 @@
 }
 
 .mainExplorer h1, .mainJourney h1 {
-    max-width: 15em;    
+    max-width: 15em;
 }
 
 .mainRight {

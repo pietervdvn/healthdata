@@ -21,15 +21,40 @@ class Questions extends React.Component {
     return (
       <div>
         <Navbar />
-        <div>
-          People will be going on a journey here.
-          <br />
-          Question 1: <input type="text" id="inp1" onChange={(event) => this.updateVal1(event.target.value)} />
-          <br />
-          Question 2: <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
-          <br />
-          Question 3: <input type="text" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} />
-          <br />
+        <div className="flex-container">
+          <div>
+            <h1>Hi there!</h1>
+            <p>
+              Before we start, we just need you to fill in some simple questions.
+              <br />
+              Don't worry,
+              <span className="red bold">this won't take long! </span>
+              And it will make the journey much more personal ;)
+            </p>
+            <div className="flex-container">
+              <div>
+                <div>
+                  What's your age?
+                <br /> <input type="text" id="inp1" onChange={(event) => this.updateVal1(event.target.value)} />
+                </div>
+                <div>
+                  What's your gender?
+                <br /> <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
+                </div>
+              </div>
+
+              <div>
+                In what province do you live?
+                <br /> <input type="text" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} />
+              </div>
+            </div>
+          </div>
+          <div>
+            oi
+          </div>
+
+
+
           <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">Continue</Link>
         </div>
         <Footer />
