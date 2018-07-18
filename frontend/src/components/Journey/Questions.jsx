@@ -49,7 +49,7 @@ class Questions extends React.Component {
                   <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
                 </div>
               </div>
-              <div>
+              <div className="thirdQuestion">
                 <label htmlFor="inp3">
                   In what province do you live?
                     </label>
@@ -58,7 +58,7 @@ class Questions extends React.Component {
 
                 <p>
                   <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">
-                    Continue <i className="fa fa-angle-right bold"></i>
+                    Start your journey <i className="fa fa-angle-right bold"></i>
                     </Link>
                 </p>
 

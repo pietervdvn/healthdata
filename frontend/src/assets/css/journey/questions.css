@@ -26,7 +26,13 @@
     padding: 0.3em 0.5em 0.3em 0.5em;
     border-radius: 20px;
     border: 2px solid #ff6464;
-    max-width: 5em;
+    max-width: 8.8em;
+}
+
+.questionsContent a:hover {
+    transition: 0.3s;
+    background-color: white;
+    color: #ff6464;
 }
 
 .questionsContent label {
@@ -39,7 +45,11 @@ input {
     width: 98%;
     border: none;
     border-bottom: solid 2px #ff6464;
-    font-size: 1.2em;
+    font-size: 1em;
     font-style: italic;
     color: gray;
+}
+
+.thirdQuestion {
+    width: 100%;
 }
