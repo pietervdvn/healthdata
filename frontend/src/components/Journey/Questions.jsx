@@ -22,40 +22,55 @@ class Questions extends React.Component {
       <div>
         <Navbar />
         <div className="flex-container">
-          <div>
-            <h1>Hi there!</h1>
-            <p>
-              Before we start, we just need you to fill in some simple questions.
+          <div className="questionsLeft">
+            <div className="questionsContent">
+              <h1>Hi there!</h1>
+              <p>
+                Before we start, we just need you to fill in some simple questions.
               <br />
-              Don't worry,
-              <span className="red bold">this won't take long! </span>
-              And it will make the journey much more personal ;)
+                Don't worry, 
+              <span className="red bold"> this won't take long! </span>
+              <br/> 
+                And it will make the journey much more personal ;)
             </p>
-            <div className="flex-container">
+              <div className="flex-container">
+                <div>
+                  <div>
+                    <label htmlFor="inp1">What's your age?</label>
+                    <br />
+                    <input type="number" id="inp1" min="1" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="inp2">
+                    What's your gender?
+                  </label>
+                  <br />
+                  <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
+                </div>
+              </div>
               <div>
-                <div>
-                  What's your age?
-                <br /> <input type="text" id="inp1" onChange={(event) => this.updateVal1(event.target.value)} />
-                </div>
-                <div>
-                  What's your gender?
-                <br /> <input type="text" id="inp2" onChange={(event) => this.updateVal2(event.target.value)} />
-                </div>
+                <label htmlFor="inp3">
+                  In what province do you live?
+                    </label>
+                <br />
+                <input type="text" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} />
+
+                <p>
+                  <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">
+                    Continue <i className="fa fa-angle-right bold"></i>
+                    </Link>
+                </p>
+
               </div>
 
-              <div>
-                In what province do you live?
-                <br /> <input type="text" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} />
-              </div>
+
             </div>
+
           </div>
-          <div>
-            oi
+          <div className="questionsRight">
+            An image will come here.
           </div>
-
-
-
-          <Link id="test_link" style={{ display: "none" }} className={this.state.value1} to="/journey/whatisdepression">Continue</Link>
         </div>
         <Footer />
       </div>

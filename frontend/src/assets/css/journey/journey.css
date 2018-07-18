@@ -10,3 +10,12 @@
 .flex-container>div {
     width: 100%;
 }
+
+.red {
+    color: #ff6464;
+}
+
+.bold {
+    font-weight: bold;
+}
+

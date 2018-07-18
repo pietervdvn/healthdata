@@ -1,3 +1,45 @@
 .questions {
     /* padding: 3%; */
 }
+
+.questionsLeft, .questionsRight {
+    height: calc(100vh - 3.8em);
+}
+
+.questionsLeft {
+    /* padding: 1em; */
+    /* background-color: blue; */
+}
+
+.questionsRight {
+    background-color: #f1f1f1;
+}
+
+.questionsContent {
+    padding: 5em;
+}
+
+.questionsContent a {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6464;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    border-radius: 20px;
+    border: 2px solid #ff6464;
+    max-width: 5em;
+}
+
+.questionsContent label {
+    font-weight: bold;
+    font-size: 95%;
+    line-height: 2.5;
+}
+
+input {
+    width: 98%;
+    border: none;
+    border-bottom: solid 2px #ff6464;
+    font-size: 1.2em;
+    font-style: italic;
+    color: gray;
+}

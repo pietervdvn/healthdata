@@ -18,14 +18,14 @@ const Home = () => (
             Get insights into cancer and depression in Belgium,
             and compare them yourself to the public.
           </p>
-          <Link to="/journey/questions">Take me on a journey 	<i className="fa fa-angle-right" style={{ fontWeight: "bold" }} ></i></Link>
+          <Link to="/journey/questions">Take me on a journey 	<i className="fa fa-angle-right bold"></i></Link>
         </div>
         <div className="mainExplorer">
           <h1>Get insights in Belgian hospital data</h1>
           <p>
             Get insights into data from all Belgian hospitals.
           </p>
-          <Link to="/explorer">Explore on my own <i className="fa fa-angle-right" style={{ fontWeight: "bold" }} ></i></Link><br />
+          <Link to="/explorer">Explore on my own <i className="fa fa-angle-right bold"></i></Link><br />
         </div>
 
       </div>
