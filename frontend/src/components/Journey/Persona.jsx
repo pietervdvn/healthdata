@@ -6,13 +6,11 @@ class Persona extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.isMale);
-
         this.state = {
             name: "Lady D",
             age: this.props.age,
             isMale: this.props.gender == "male"?true:false,
-            province: this.props.province
+            province: this.props.province,
         }
     }
 
@@ -27,11 +25,6 @@ class Persona extends React.Component {
                     <div className="personaRight">
                         <Timeline />
                         <div className="personaContent">
-                            <h1>What is depression?</h1>
-                            <p>
-                                Depression is a common mental illness. Depression causes severe symptoms that affect how you feel, think, and handle daily activities, such as sleeping, eating, or working.
-                                Depression causes feelings of sadness and/or a loss of interest in activities you once enjoyed.
-                            </p>
 
                             <h1><span className="redUnderline">Me</span>et {this.state.name} ...</h1>
                             <p className="bold personaDiagnosis">
