@@ -6,7 +6,7 @@ import xlrd
 
 from geopy.geocoders import Nominatim
 from bonobo.contrib.django import ETLCommand
-from api.models import Hospital
+from api.models import Hospital, HospitalNetwork
 from django.conf import settings
 from datetime import date
 from api.utils import geocode
@@ -37,6 +37,14 @@ def parse_hospital_data():
     for row_number in range(2,sh.nrows):
         yield dict(zip(headers, sh.row_values(row_number)))
 
+def get_network(id,name):
+    try:
+        network = HospitalNetwork.objects.get(pk=id)
+    except:
+        network = HospitalNetwork(name=name,id=id)
+        network.save()
+    return network
+
 def transform_hospital_data(row):
     geolocator = Nominatim()
     location = geolocator.geocode(row["ADRES"] + " " + str(row["POST"]) + " " + row["GEMEENTE "] + " " + ", Belgium")
@@ -52,11 +60,28 @@ def transform_hospital_data(row):
     else:
         beds = int(eval(str(row["TOTAAL BEDDEN"])))
     try:
-        p = Hospital(name=row['ZIEKENHUIS '], latitude=lat, longitude=long, nbBeds=beds,
-            siteNbr=int(eval(str(row["VESTIGINGSNR"]))), address=row["ADRES"], postalCode=int(eval(str(row["POST"]))),
-            town=row["GEMEENTE "], website=row["WEBSITE"], telephone=row["TELEFOON"], province=row["PROVINCIE "], type=row["SOORT ZIEKENHUIS"])
-        yield p
+        if isInt(row['ERK']):
+            network = get_network(int(row['ERK']),row['ZIEKENHUIS '])
+            name = row['CAMPUS'].strip() if row['CAMPUS'].strip() else row['ZIEKENHUIS '].strip()
+            p = Hospital(
+                network=network,
+                latitude=lat,
+                longitude=long,
+                nbBeds=beds,
+                siteNbr=row["VESTIGINGSNR"],
+            address=row["ADRES"],
+                postalCode=int(row["POST"]),
+                town=row["GEMEENTE "],
+                website=row["WEBSITE"],
+                telephone=row["TELEFOON"],
+                province=row["PROVINCIE "],
+            type=row["SOORT ZIEKENHUIS"]
+            )
+            yield p
     except:
+        print('failed for ')
+        print(row)
+        print(sys.exc_info()[0])
         pass
 
 def load_hospital_data(hospital):
