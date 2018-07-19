@@ -10,7 +10,7 @@ from django.conf import settings
 
 def isInt(value):
     try:
-        int(eval(value))
+        int(value)
         return True
     except:
         return False
