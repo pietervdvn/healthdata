@@ -9,7 +9,7 @@ class Persona extends React.Component {
         this.state = {
             name: this.props.name,
             age: this.props.age,
-            isMale: this.props.gender == "male"?true:false,
+            isMale: this.props.gender == "male" ? true : false,
             province: this.props.province,
         }
     }

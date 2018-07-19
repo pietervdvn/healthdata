@@ -2,23 +2,22 @@ import React from 'react';
 import '../../assets/css/journey/questions.css';
 import { Link } from 'react-router-dom';
 
-import Navbar from '../Navbar';
-import Footer from '../Footer';
 
 class Questions extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value1: "", //age
-      value2: "", //gender
-      value3: "" //location
+      value1: 27, //age
+      value2: "male", //gender
+      value3: "Brussels" //location
     };
   }
 
   NextScreenAndSendData() {
     this.props.onClick(this.state.value1, this.state.value2, this.state.value3);
   }
+
   render() {
     return (
       <div>
@@ -38,7 +37,7 @@ class Questions extends React.Component {
                   <div>
                     <label htmlFor="inp1">What's your age?</label>
                     <br />
-                    <input type="number" id="inp1" min="1" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
+                    <input type="number" id="inp1" defaultValue="0" min="0" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
                   </div>
                 </div>
                 <div>
@@ -47,7 +46,7 @@ class Questions extends React.Component {
                   </label>
                   <br />
                   <select id="inp2" onChange={(event) => this.updateVal2(event.target.value)}>
-                    <option disabled selected value></option>
+                    <option value="null">Won't say</option>
                     <option value="male">Male</option>
                     <option value="female`">Female</option>
                   </select>
@@ -61,7 +60,7 @@ class Questions extends React.Component {
 
 
                 <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
-                  <option disabled selected value></option>
+                  <option value="null">Won't say</option>
                   <option value="Antwerp">Antwerp</option>
                   <option value="East Flanders">East Flanders</option>
                   <option value="Flemish Brabant">Flemish Brabant</option>
@@ -76,7 +75,9 @@ class Questions extends React.Component {
                 </select>
 
                 <p>
-                  <button id="continue_button" style={{ display: "none" }} className="redButtonLink" onClick={() => this.NextScreenAndSendData()}>Start your journey <i className="fa fa-angle-right bold"></i></button>
+                  {/* <button id="continue_button" style={{ display: "none" }} className="redButtonLink" onClick={() => this.NextScreenAndSendData()}>Start your journey <i className="fa fa-angle-right bold"></i></button> */}
+                  {/* <br/> */}
+                  <button id="continue_button" className="redButtonLink" onClick={() => this.NextScreenAndSendData()}>Start your journey <i className="fa fa-angle-right bold"></i></button>
                 </p>
 
               </div>
@@ -95,30 +96,36 @@ class Questions extends React.Component {
   }
 
   updateVal1(val) {
-    this.state.value1 = val;
-    // super.setState({value1: "lol"});    
-    // console.log(this.state.value1);
-    this.hideOrShowContinueButton();
+    if (val <= 0 || val >= 121)
+      this.setState({ value1: 27 });
+    else
+      this.setState({ value1: val });
   }
 
   updateVal2(val) {
-    this.state.value2 = val;
-    this.hideOrShowContinueButton();
+    if (val == "null")
+      this.setState({ value2: "male" });
+    else
+      this.setState({ value2: val });
+
   }
 
   updateVal3(val) {
-    this.state.value3 = val;
-    this.hideOrShowContinueButton();
-  }
-
-  hideOrShowContinueButton() {
-
-    if (this.state.value1.length != 0 && this.state.value2.length != 0 && this.state.value3.length != 0) {
-      document.getElementById("continue_button").style.display = "block"
+    if (val == "null") {
+      this.setState({ value3: "Brussels" });
     }
     else
-      document.getElementById("continue_button").style.display = "none";
+      this.setState({ value3: val });
   }
+
+  // hideOrShowContinueButton() {
+
+  //   if (this.state.value1.length != 0 && this.state.value2.length != 0 && this.state.value3.length != 0) {
+  //     document.getElementById("continue_button").style.display = "block"
+  //   }
+  //   else
+  //     document.getElementById("continue_button").style.display = "none";
+  // }
 
 
 }
