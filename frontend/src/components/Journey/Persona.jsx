@@ -1,22 +1,18 @@
 import React from 'react';
 import '../../assets/css/journey/persona.css';
-
-
-import Navbar from '../Navbar';
-import Footer from '../Footer';
 import Timeline from './Timeline';
-import { Link } from 'react-router-dom';
-import { reaction } from '../../../node_modules/mobx';
 
 class Persona extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(this.props.isMale);
+
         this.state = {
             name: "Lady D",
-            age: 69,
-            isMale: false,
-            province: "West Flanders"
+            age: this.props.age,
+            isMale: this.props.gender == "male"?true:false,
+            province: this.props.province
         }
     }
 
@@ -24,14 +20,11 @@ class Persona extends React.Component {
         return (
 
             <div>
-                <Navbar />
                 <div className="flex-container">
                     <div className="personaLeft">
 
                     </div>
                     <div className="personaRight">
-
-
                         <Timeline />
                         <div className="personaContent">
                             <h1>What is depression?</h1>
@@ -73,14 +66,12 @@ class Persona extends React.Component {
                                 </p>
 
                             </div>
-
-
-                            <Link className="redLink" to="/journey/comparison">Continue</Link>
-
+                            <p>
+                                <button className="redButtonLink" onClick={() => this.props.onClick()}>Start your journey</button>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div >
 
         )

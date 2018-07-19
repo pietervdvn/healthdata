@@ -10,16 +10,18 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value1: "",
-      value2: "",
-      value3: ""
+      value1: "", //age
+      value2: "", //gender
+      value3: "" //location
     };
   }
 
+  NextScreenAndSendData() {
+    this.props.onClick(this.state.value1, this.state.value2, this.state.value3);
+  }
   render() {
     return (
       <div>
-        <Navbar />
         <div className="flex-container">
           <div className="questionsLeft">
             <div className="questionsContent">
@@ -47,8 +49,7 @@ class Questions extends React.Component {
                   <select id="inp2" onChange={(event) => this.updateVal2(event.target.value)}>
                     <option disabled selected value></option>
                     <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="null">I'd rather not say</option>
+                    <option value="female`">Female</option>
                   </select>
                 </div>
               </div>
@@ -61,26 +62,21 @@ class Questions extends React.Component {
 
                 <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
                   <option disabled selected value></option>
-                  <option value="antwerp">Antwerp</option>
-                  <option value="eastflanders">East Flanders</option>
-                  <option value="flemishbrabant">Flemish Brabant</option>
-                  <option value="limburg">Limburg</option>
-                  <option value="westflanders">West Fladers</option>
-                  <option value="liege">Liege</option>
-                  <option value="hainaut">Hainaut</option>
-                  <option value="luxembourg">Luxembourg</option>
+                  <option value="Antwerp">Antwerp</option>
+                  <option value="East Flanders">East Flanders</option>
+                  <option value="Flemish Brabant">Flemish Brabant</option>
+                  <option value="Limburg">Limburg</option>
+                  <option value="West Flanders">West Fladers</option>
+                  <option value="Liege">Liege</option>
+                  <option value="Hainaut">Hainaut</option>
+                  <option value="Luxembourg">Luxembourg</option>
                   <option value="Namur">Namur</option>
                   <option value="Walloon Brabant">Walloon Brabant</option>
 
                 </select>
 
-
-
-                {/* <input type="text" placeholder="Province" id="inp3" onChange={(event) => this.updateVal3(event.target.value)} /> */}
                 <p>
-                  <Link id="test_link" style={{ display: "none" }} to="/journey/persona">
-                    Start your journey <i className="fa fa-angle-right bold"></i>
-                  </Link>
+                  <button id="continue_button" style={{ display: "none" }} className="redButtonLink" onClick={() => this.NextScreenAndSendData()}>Start your journey <i className="fa fa-angle-right bold"></i></button>
                 </p>
 
               </div>
@@ -93,7 +89,6 @@ class Questions extends React.Component {
             An image will come here.
           </div>
         </div>
-        <Footer />
       </div>
     );
 
@@ -119,10 +114,10 @@ class Questions extends React.Component {
   hideOrShowContinueButton() {
 
     if (this.state.value1.length != 0 && this.state.value2.length != 0 && this.state.value3.length != 0) {
-      document.getElementById("test_link").style.display = "block"
+      document.getElementById("continue_button").style.display = "block"
     }
     else
-      document.getElementById("test_link").style.display = "none";
+      document.getElementById("continue_button").style.display = "none";
   }
 
 

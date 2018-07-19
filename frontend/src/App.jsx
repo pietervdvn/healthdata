@@ -7,21 +7,12 @@ import NotFound from './components/404';
 import Questions from './components/Journey/Questions';
 import Persona from './components/Journey/Persona';
 import Map from './components/Journey/Map';
-import Comparison from './components/Journey/Comparison';
+import ComparisonProvince from './components/Journey/ComparisonProvince';
+import ComparisonBelgium from './components/Journey/ComparisonBelgium';
 
 
 
 class App extends React.Component {
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     value1: "val1",
-  //     value2: "2",
-  //     value3: "tes3"
-  //   }
-  // }
-
   render() {
     return (
       <BrowserRouter>
@@ -31,7 +22,8 @@ class App extends React.Component {
           <Route exact path="/:path(journey)" component={Journey} />
           <Route exact path="/:path(journey)/:path(questions)" component={Questions} />
           <Route exact path="/:path(journey)/:path(persona)" component={Persona} />
-          <Route exact path="/:path(journey)/:path(comparison)" component={Comparison} />
+          <Route exact path="/:path(journey)/:path(comparisonProvince)" component={ComparisonBelgium} />
+          <Route exact path="/:path(journey)/:path(comparisonBelgium)" component={ComparisonProvince} />
           <Route exact path="/:path(journey)/:path(map)" component={Map} />
 
           <Route component={NotFound} />
