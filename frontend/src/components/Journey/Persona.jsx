@@ -7,7 +7,7 @@ class Persona extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "Lady D",
+            name: this.props.name,
             age: this.props.age,
             isMale: this.props.gender == "male"?true:false,
             province: this.props.province,
