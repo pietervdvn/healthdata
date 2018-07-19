@@ -12,10 +12,11 @@ class PopulationDetailedSerializer(serializers.ModelSerializer):
     class Meta:
         model = PopulationDetailed
         fields = ('id', 'name', 'year', 'amount', 'age', 'gender')
+
 class BedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bed
-        fields = ('id', 'year', 'month', 'type', 'amount')
+        fields = ('id', 'year', 'month', 'type', 'amount','typeName')
 
 class HospitalNetworkSerializer(serializers.ModelSerializer):
     class Meta:
