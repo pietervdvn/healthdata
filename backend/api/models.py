@@ -50,5 +50,6 @@ class Bed(models.Model):
     network = models.ForeignKey(HospitalNetwork, to_field="id", db_column="network_id", on_delete=models.CASCADE)
     year = models.IntegerField()
     month = models.IntegerField()
-    type = models.CharField(max_length= 5, null = True)
+    type = models.CharField(max_length= 20, null = True)
     amount = models.IntegerField()
+    typeName = models.CharField(max_length = 500, null = True)

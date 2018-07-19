@@ -3,12 +3,6 @@ from api.models import Hospital, HospitalNetwork
 from api.models import Bed, Depression
 from api.models import Population, PopulationDetailed
 
-
-class BedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Bed
-        fields = ('id', 'year', 'month', 'type', 'amount')
-
 class PopulationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Population
@@ -22,6 +16,11 @@ class DepressionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Depression
         fields = ('id', 'gender', 'agegroup', 'crude', 'province', 'year')
+
+class BedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bed
+        fields = ('id', 'year', 'month', 'type', 'amount','typeName')
 
 class HospitalNetworkSerializer(serializers.ModelSerializer):
     class Meta:
