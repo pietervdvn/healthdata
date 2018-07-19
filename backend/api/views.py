@@ -6,8 +6,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.models import Hospital, HospitalNetwork, Population, PopulationDetailed
-from api.serializers import HospitalDetailSerializer, PopulationSerializer, PopulationDetailedSerializer, HospitalNetworkSerializer
+from api.models import Hospital, HospitalNetwork, Population, PopulationDetailed, Bed
+from api.serializers import HospitalDetailSerializer, PopulationSerializer, PopulationDetailedSerializer, HospitalNetworkSerializer, BedSerializer
 
 def isInt(value):
     try:
@@ -52,4 +52,14 @@ def detailedHospital_list(request):
 def hospitalNetwork_list(request):
     networks = HospitalNetwork.objects.all()
     serializer = HospitalNetworkSerializer(networks, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def beds_per_network(request, pk):
+    network = HospitalNetwork.objects.get(pk=pk)
+    beds = Bed.objects.filter(network=network)
+    if request.GET.get('year') is not None:
+        beds = beds.filter(year=int(request.GET.get('year'))) # todo probably unsafe
+    if request.GET.get('type') is not None:
+        beds = beds.filter(type=request.GET.get('type')) # todo probably unsafe
+    serializer = BedSerializer(beds, many=True)
     return JsonResponse(serializer.data, safe=False)

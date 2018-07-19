@@ -11,11 +11,10 @@ docker-compose exec api python manage.py migrate # only when you need to run mig
 #import data using bonobo
 docker-compose exec api python manage.py historicaldata
 docker-compose exec api python manage.py importDetailedHospitals
-docker-compose exec api python manage.py importpopulation
-
+docker-compose exec api python manage.py importbedshistory
 ```
 
-To access the api : http://localhost:8000/api/hospitals
+To access the api : http://localhost:8000/api/hospitals , http://localhost:8000/api/hospital-networks, http://localhost:8000/api/hospital-networks/[id]/beds (optional query params: type, year)
 
 Requires a `.env` file in the root of the frontend folder to run. This should contain your API URL as `REACT_APP_API_URL`.  
 Example if using the standard docker configuration and port:
