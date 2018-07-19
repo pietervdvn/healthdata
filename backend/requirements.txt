@@ -28,8 +28,8 @@ pbr==4.1.0
 psutil==5.4.6
 psycopg2==2.7.5
 pyparsing==2.2.0
-python-dateutil==2.7.3
 python-slugify==1.2.5
+python-dateutil==2.7.3
 pytz==2018.5
 requests==2.19.1
 semantic-version==2.6.0
@@ -41,3 +41,4 @@ urllib3==1.23
 websocket-client==0.48.0
 whistle==1.0.1
 xlrd==1.1.0
+

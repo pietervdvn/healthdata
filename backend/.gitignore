@@ -117,4 +117,5 @@ venv.bak/
 
 # downloaded files
 api/source-data/population
+api/source-data/hospitals
 

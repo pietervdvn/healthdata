@@ -56,3 +56,8 @@ def populationDetailed_detail(request, pk):
         raise Http404("Populationdeatiled not found")
     serializer = PopulationDetailedSerializer(population)
     return JsonResponse(serializer.data)
+
+def detailedHospital_list(request):
+    hospitals = Hospital.objects.all()
+    serializer = HospitalDetailSerializer(hospitals, many=True)
+    return JsonResponse(serializer.data, safe=False)
