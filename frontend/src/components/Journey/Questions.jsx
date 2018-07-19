@@ -28,7 +28,7 @@ class Questions extends React.Component {
                 Before we start, we just need you to fill in some simple questions.
                 Don't worry,
               <span className="red bold"> this won't take long! </span>
-                
+
                 And it will make the journey much more personal ;)
             </p>
               <div className="flex-container firsttwoQuestions">
@@ -45,7 +45,7 @@ class Questions extends React.Component {
                   </label>
                   <br />
                   <select id="inp2" onChange={(event) => this.updateVal2(event.target.value)}>
-                  <option disabled selected value></option>
+                    <option disabled selected value></option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="null">I'd rather not say</option>
@@ -59,20 +59,20 @@ class Questions extends React.Component {
                 <br />
 
 
-                  <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
-                    <option disabled selected value></option>
-                    <option value="antwerp">Antwerp</option>
-                    <option value="eastflanders">East Flanders</option>
-                    <option value="flemishbrabant">Flemish Brabant</option>
-                    <option value="limburg">Limburg</option>
-                    <option value="westflanders">West Fladers</option>
-                    <option value="liege">Liege</option>
-                    <option value="hainaut">Hainaut</option>
-                    <option value="luxembourg">Luxembourg</option>
-                    <option value="Namur">Namur</option>
-                    <option value="Walloon Brabant">Walloon Brabant</option>
+                <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
+                  <option disabled selected value></option>
+                  <option value="antwerp">Antwerp</option>
+                  <option value="eastflanders">East Flanders</option>
+                  <option value="flemishbrabant">Flemish Brabant</option>
+                  <option value="limburg">Limburg</option>
+                  <option value="westflanders">West Fladers</option>
+                  <option value="liege">Liege</option>
+                  <option value="hainaut">Hainaut</option>
+                  <option value="luxembourg">Luxembourg</option>
+                  <option value="Namur">Namur</option>
+                  <option value="Walloon Brabant">Walloon Brabant</option>
 
-                  </select>
+                </select>
 
 
 
@@ -101,6 +101,8 @@ class Questions extends React.Component {
 
   updateVal1(val) {
     this.state.value1 = val;
+    // super.setState({value1: "lol"});    
+    // console.log(this.state.value1);
     this.hideOrShowContinueButton();
   }
 
@@ -115,6 +117,7 @@ class Questions extends React.Component {
   }
 
   hideOrShowContinueButton() {
+
     if (this.state.value1.length != 0 && this.state.value2.length != 0 && this.state.value3.length != 0) {
       document.getElementById("test_link").style.display = "block"
     }

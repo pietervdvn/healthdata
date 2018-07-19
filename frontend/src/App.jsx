@@ -11,21 +11,35 @@ import Comparison from './components/Journey/Comparison';
 
 
 
-const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/:path(|index|home)" component={Home} />
-      <Route exact path="/:path(explorer)" component={Explorer} />
-      <Route exact path="/:path(journey)" component={Journey} />
-      <Route exact path="/:path(journey)/:path(questions)" component={Questions} />
-      <Route exact path="/:path(journey)/:path(persona)" component={Persona} />
-      <Route exact path="/:path(journey)/:path(comparison)" component={Comparison} />
-      <Route exact path="/:path(journey)/:path(map)" component={Map} />
+class App extends React.Component {
 
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value1: "val1",
+  //     value2: "2",
+  //     value3: "tes3"
+  //   }
+  // }
 
-      <Route component={NotFound} />
-    </Switch>
-  </BrowserRouter>
-);
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/:path(|index|home)" component={Home} />
+          <Route exact path="/:path(explorer)" component={Explorer} />
+          <Route exact path="/:path(journey)" component={Journey} />
+          <Route exact path="/:path(journey)/:path(questions)" component={Questions} />
+          <Route exact path="/:path(journey)/:path(persona)" component={Persona} />
+          <Route exact path="/:path(journey)/:path(comparison)" component={Comparison} />
+          <Route exact path="/:path(journey)/:path(map)" component={Map} />
+
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
+}
+
 
 export default App;

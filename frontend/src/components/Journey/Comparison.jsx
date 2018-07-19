@@ -12,6 +12,10 @@ class Comparison extends React.Component {
         super(props);
         this.state = {
             listOfDummies: new Array(),
+            name: "Lady D",
+            age: 69,
+            isMale: false,
+            province: "West Flanders"
         };
         this.fillList();
 
@@ -31,8 +35,10 @@ class Comparison extends React.Component {
             <div>
                 <Navbar />
                 <div className="journey_content">
-                    Comparison
-                    <br />
+
+
+                    <h1>Comparison over provinces</h1>
+                    <p>In {this.state.province}, {this.state.name} has x% chances to meet another {this.state.age} years old, touched with depression. <br /> “x persons in blue with 100-x persons in white/red/whatever. In {this.state.province}, that’s [x*ProvincePop].</p>
                     {
                         this.state.listOfDummies.map(function (list) {
                             let iterationOfDummies = new Array();
@@ -44,9 +50,13 @@ class Comparison extends React.Component {
                         })
                     }
 
-                    <br />
+                    <h1>Comparison over Belgium</h1>
+                    <p>
+                        Meanwhile, Belgium counts 703,700 people with depression, which is more than the inhabitants of Antwerp AND Namur combined (show city of antwerp and Namur).
+                        (0.062*11,350,000=703,700 people in Belgium in 2017; Antwerp = 520,000; Namur=110,000 -> We can say “more than the inhabitants of Antwerp and Namur combined”).
+                    </p>
 
-                    <Link to="/journey/map">Continue</Link>
+                    <Link className="redLink" to="/journey/map">Continue</Link>
                 </div>
                 <Footer />
             </div>

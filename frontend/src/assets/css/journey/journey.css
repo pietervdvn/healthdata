@@ -22,3 +22,20 @@
 .redUnderline{
     border-bottom: #ff6464 5px solid;
 }
+
+
+
+.redLink {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6464;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    border-radius: 20px;
+    border: 2px solid #ff6464;
+}
+
+.redLink:hover {
+    transition: 0.3s;
+    background-color: white;
+    color: #ff6464;
+}
