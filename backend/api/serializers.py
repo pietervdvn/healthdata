@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Hospital, HospitalNetwork, Bed
+from api.models import Hospital, HospitalNetwork, Bed, BedDetailed
 from api.models import Population, PopulationDetailed
 
 
@@ -27,3 +27,8 @@ class HospitalDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hospital
         fields = ('id', 'siteNbr', 'name', 'latitude', 'longitude', 'nbBeds', 'address', 'postalCode', 'town', 'telephone', 'website', 'province', 'type','network')
+
+class BedDetailedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BedDetailed
+        fields = ('id', 'hospital','typeofbed', 'typeName', 'amount', 'year', 'month')

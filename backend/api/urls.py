@@ -10,4 +10,6 @@ urlpatterns = [
     url('hospitals/', views.detailedHospital_list),
     url('hospital-networks/(?P<pk>.*)/beds$', views.beds_per_network),
     url('hospital-networks/', views.hospitalNetwork_list),
+    url('beddetailed/(?P<pk>[0-9]+)/$', views.bedDetailed_detail),
+    url('beddetailed/', views.bedDetailed_data),
 ]

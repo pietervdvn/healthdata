@@ -86,8 +86,8 @@ def transform_population_data(row):
     p = Population(name=row['name'], year=row[' year'], amount=row[' amount'])
     yield p
 
-def load_population_data(population):
-    population.save()
+def load_population_data(bed):
+    bed.save()
 
 class Command(ETLCommand):
     def get_graph(self, **options):

@@ -68,25 +68,25 @@ def transform_excels_to_beds_history(excel, month, year):
     print('parsing excel %s' % excel)
     for row_number in range(4,sh.nrows):
         row = dict(zip(headers,sh.row_values(row_number)))
-        try:
-            network = HospitalNetwork.objects.get(pk=int(row['Erkenningsnummer Ziekenhuis']))
-        except:
-            network = None
-        if network is not None:
-            for type in ['A','A1','A2','C','CD','D','E','G','I1','K','K1','K2','L','M','NIC','S1','S2','S3','S4','S5','S6','T','T1','T2','TFB','TFP','TG', 'Total Result','Eindtotaal']:
-                if row.get(type) is not None:
-                    value = int(row[type]) if isInt(row[type]) else -1
-                    if (value > -1):
-                        yield Bed(
-                            network=network,
-                            year=year,
-                            month=month,
-                            amount=value,
-                            type=type,
-                            typeName=bed_type_for_name(type)
-                        )
-        else:
-            print('network not found for ERK: %s, excel: %s' % (row['Erkenningsnummer Ziekenhuis'], excel))
+        #try:
+        #network = HospitalNetwork.objects.get(pk=row['Erkenningsnummer Ziekenhuis'])
+        #except:
+        #    network = None
+        #if network is not None:
+        for type in ['A','A1','A2','C','CD','D','E','G','I1','K','K1','K2','L','M','NIC','S1','S2','S3','S4','S5','S6','T','T1','T2','TFB','TFP','TG', 'Total Result','Eindtotaal']:
+            if row.get(type) is not None:
+                value = int(row[type]) if isInt(row[type]) else -1
+                if (value > -1):
+                    yield Bed(
+                        network=Null,
+                        year=year,
+                        month=month,
+                        amount=value,
+                        type=type,
+                        typeName=bed_type_for_name(type)
+                    )
+            else:
+                print('network not found for ERK: %s, excel: %s' % (row['Erkenningsnummer Ziekenhuis'], excel))
 
 def save_beds(bed):
     bed.save()

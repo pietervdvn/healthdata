@@ -6,8 +6,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.models import Hospital, HospitalNetwork, Population, PopulationDetailed, Bed
-from api.serializers import HospitalDetailSerializer, PopulationSerializer, PopulationDetailedSerializer, HospitalNetworkSerializer, BedSerializer
+from api.models import Hospital, HospitalNetwork, Population, PopulationDetailed, Bed, BedDetailed
+from api.serializers import HospitalDetailSerializer, PopulationSerializer, PopulationDetailedSerializer, HospitalNetworkSerializer, BedSerializer, BedDetailedSerializer
 
 def isInt(value):
     try:
@@ -63,3 +63,25 @@ def beds_per_network(request, pk):
         beds = beds.filter(type=request.GET.get('type')) # todo probably unsafe
     serializer = BedSerializer(beds, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+
+
+def bedDetailed_data(request):
+    population = BedDetailed.objects.all()
+    serializer = BedDetailedSerializer(population, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def bedDetailed_detail(request, pk):
+    try:
+        population = BedDetailed.objects.get(pk=pk)
+    except BedDetailed.DoesNotExist:
+        raise Http404("Populationdeatiled not found")
+    serializer = BedDetailedSerializer(population)
+    return JsonResponse(serializer.data)
+
+
+
+
+
+
+

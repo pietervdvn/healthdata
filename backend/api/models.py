@@ -39,9 +39,18 @@ class PopulationDetailed(models.Model):
     gender = models.CharField(max_length = 600, null = True)
 
 class Bed(models.Model):
-    network = models.ForeignKey(HospitalNetwork, to_field="id", db_column="network_id", on_delete=models.CASCADE)
+    network = models.ForeignKey(HospitalNetwork, to_field="id", db_column="network_id", on_delete=models.CASCADE, null=True)
     year = models.IntegerField()
     month = models.IntegerField()
     type = models.CharField(max_length= 20, null = True)
     amount = models.IntegerField()
     typeName = models.CharField(max_length = 500, null = True)
+
+class BedDetailed(models.Model):
+    hospital = models.CharField(max_length=600)
+    typeofbed = models.CharField(max_length=600)
+    typeName = models.CharField(max_length=600, null=True)
+    amount = models.CharField(max_length=600)
+    year = models.IntegerField(null=True)
+    month = models.IntegerField(null=True)
+
