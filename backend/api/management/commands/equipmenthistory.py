@@ -9,7 +9,7 @@ import glob
 import bonobo
 
 from bonobo.contrib.django import ETLCommand
-from api.models import BedDetailed
+from api.models import EquipmentDetailed
 from django.conf import settings
 
 
@@ -23,7 +23,6 @@ def find_excels():
         match = re.match(r'Adressenlijst%20(\d{2})_(\d{4})%20van%20de%20AZ%20en%20PZ.*.xls', files[i])
         if match is not None and int(match.group(2)) > 2017:
             yield (match.group(0), match.group(1), match.group(2))
-
 
 def bed_type_for_name(type):
     names = [
@@ -61,28 +60,27 @@ def bed_type_for_name(type):
     map = dict(zip(types,names))
     return map[type]
 
-# 'IB "SGA Volw."',
-def transform_excels_to_beddetailed_history(excel, month, year):     
-    df = pd.read_excel(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', excel))
-    df_new = df[['ZIEKENHUIS ','A','A1', 'A2', 'C', 'CD', 'D', 'E', 'G', 'K', 'K1', 'K2','L', 'M', 'NIC', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'T', 'T1', 'T2','TFB', 'TFP', 'Tg', 'TOTAAL BEDDEN']]
-    df_new = df[['ZIEKENHUIS ','A','A1', 'A2', 'C', 'CD', 'D', 'E', 'G',  'K', 'K1', 'K2','L', 'M', 'NIC', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'T', 'T1', 'T2','TFB', 'TFP', 'Tg', 'TOTAAL BEDDEN']]
-    df_new_shaped = pd.melt(df_new, id_vars='ZIEKENHUIS ', value_vars=['A','A1', 'A2', 'C', 'CD', 'D', 'E', 'G',  'K', 'K1', 'K2','L', 'M', 'NIC', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'T', 'T1', 'T2','TFB', 'TFP', 'Tg', 'TOTAAL BEDDEN'])
+
+def transform_excels_to_equipment_history(excel, month, year):     
+    df = pd.read_excel(excel)
+    df_new = df[df.columns[50:69]]
+    df_new['ZIEKENHUIS '] = df[['ZIEKENHUIS ']]
+    df_new_shaped = pd.melt(df_new, id_vars='ZIEKENHUIS ', value_vars=df.columns[50:69])
     df_new_shaped = df_new_shaped.iloc[3:]
     df_new_shaped['month']=np.repeat(month, df_new_shaped.shape[0])
     df_new_shaped['year']=np.repeat(year, df_new_shaped.shape[0])
-    df_new_shaped = df_new_shaped.dropna()
-    df_new_shaped.to_csv(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_beddetailed'))
-    csvFile = open(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_beddetailed'))
+    df_new_shaped.to_csv(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_equipmentdetailed'))
+    csvFile = open(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_equipmentdetailed'))
     reader = csv.DictReader(csvFile)
     for row in reader:
         #yield row
         #for row in df_new_shaped.iterrows():
-        p = BedDetailed(hospital=row['ZIEKENHUIS '], typeofbed=row['variable'], typeName=bed_type_for_name(row['variable']), amount=row['value'], month=row['month'], year=row['year'])
+        p = EquipmentDetailed(hospital=row['ZIEKENHUIS '], typeofequipment=row['variable'], typeName=equipment_type_for_name(row['variable']), amount=row['value'], month=row['month'], year=row['year'])
         yield p
-    
 
-def load_beddetailed_data(beddetailed):
-    beddetailed.save()
+
+def load_equipmentdetailed_data(equipmentdetailed):
+    equipmentdetailed.save()
 
 
 
@@ -91,10 +89,15 @@ class Command(ETLCommand):
         graph = bonobo.Graph()
         graph.add_chain(
             find_excels,
-            transform_excels_to_beddetailed_history,
-            load_beddetailed_data
+            transform_excels_to_equipment_history,
+            load_equipmentdetailed_data
         )
         return graph
+
+
+
+
+
 
 
 

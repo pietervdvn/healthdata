@@ -70,9 +70,8 @@ def transform_excels_to_beddetailed_history(excel, month, year):
     df_new_shaped = df_new_shaped.iloc[3:]
     df_new_shaped['month']=np.repeat(month, df_new_shaped.shape[0])
     df_new_shaped['year']=np.repeat(year, df_new_shaped.shape[0])
-    df_new_shaped = df_new_shaped.dropna()
-    df_new_shaped.to_csv(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_beddetailed'))
-    csvFile = open(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_beddetailed'))
+    df_new_shaped.to_csv(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_detailed'))
+    csvFile = open(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', str(excel)+'_detailed'))
     reader = csv.DictReader(csvFile)
     for row in reader:
         #yield row
