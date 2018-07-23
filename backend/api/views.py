@@ -2,27 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
 from django.conf import settings
-import os
-import csv
-from api.models import Hospital
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.models import Hospital
-from api.serializers import HospitalSerializer
-
-def importHospitals(request):
-    csvFile = open(os.path.join(settings.BASE_DIR, 'api', 'csvFiles', 'hospitals.csv'))
-    reader = csv.DictReader(csvFile)
-    for row in reader:
-        if not isInt(row['beds']):
-            #if number of beds not provided
-            p = Hospital(name=row['name'], latitude=row['lat'], longitude=row['long'], nbBeds=0)
-        else:
-            p = Hospital(name=row['name'], latitude=row['lat'], longitude=row['long'], nbBeds=int(row['beds']))
-        p.save()
-    return HttpResponse("<h1>Imported Successfully</h1>")
+from api.models import Hospital, Population, PopulationDetailed, Depression
+from api.serializers import HospitalSerializer, PopulationSerializer, PopulationDetailedSerializer, DepressionSerializer
 
 def isInt(value):
     try:
@@ -42,4 +27,43 @@ def hospital_detail(request, pk):
     except Hospital.DoesNotExist:
         raise Http404("Hospital not found")
     serializer = HospitalSerializer(hospital)
+    return JsonResponse(serializer.data)
+
+def population_data(request):
+    population = Population.objects.all()
+    serializer = PopulationSerializer(population, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def population_detail(request, pk):
+    try:
+        population = Population.objects.get(pk=pk)
+    except Population.DoesNotExist:
+        raise Http404("Population not found")
+    serializer = PopulationSerializer(population)
+    return JsonResponse(serializer.data)
+
+def populationDetailed_data(request):
+    population = PopulationDetailed.objects.all()
+    serializer = PopulationDetailedSerializer(population, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def populationDetailed_detail(request, pk):
+    try:
+        population = PopulationDetailed.objects.get(pk=pk)
+    except PopulationDetailed.DoesNotExist:
+        raise Http404("Populationdeatiled not found")
+    serializer = PopulationDetailedSerializer(population)
+    return JsonResponse(serializer.data)
+
+def depression_data(request):
+    population = Depression.objects.all()
+    serializer = DepressionSerializer(population, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def depression_detail(request, pk):
+    try:
+        population = Depression.objects.get(pk=pk)
+    except Depression.DoesNotExist:
+        raise Http404("Depression not found")
+    serializer = DepressionSerializer(population)
     return JsonResponse(serializer.data)

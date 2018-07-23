@@ -6,9 +6,9 @@ import Hospital from '../../models/Hospital';
 const HospitalMarker = ({ hospital }) => {
   const center = [hospital.latitude, hospital.longitude];
   return (
-    <CircleMarker center={center} radius={3}>
+    <CircleMarker center={center} radius={2} color="#FF6464">
       <Popup>
-        {hospital.hospital}
+        {hospital.name}
       </Popup>
     </CircleMarker>
   );
