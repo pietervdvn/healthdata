@@ -62,20 +62,22 @@ def transform_hospital_data(row):
     try:
         if isInt(row['ERK']):
             network = get_network(int(row['ERK']),row['ZIEKENHUIS '])
-            name = row['CAMPUS'].strip() if row['CAMPUS'].strip() else row['ZIEKENHUIS '].strip()
+            cleaned_name = row['CAMPUS'].strip()
+            name = cleaned_name if cleaned_name else row['ZIEKENHUIS '].strip()
             p = Hospital(
                 network=network,
                 latitude=lat,
                 longitude=long,
                 nbBeds=beds,
                 siteNbr=row["VESTIGINGSNR"],
-            address=row["ADRES"],
+                address=row["ADRES"],
                 postalCode=int(row["POST"]),
                 town=row["GEMEENTE "],
                 website=row["WEBSITE"],
                 telephone=row["TELEFOON"],
                 province=row["PROVINCIE "],
-            type=row["SOORT ZIEKENHUIS"]
+                name=name,
+                type=row["SOORT ZIEKENHUIS"]
             )
             yield p
     except:

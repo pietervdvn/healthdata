@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.models import Hospital, HospitalNetwork, Population, PopulationDetailed, Depression
+from api.models import Bed, Hospital, HospitalNetwork, Population, PopulationDetailed, Depression
 from api.serializers import HospitalSerializer, HospitalNetworkSerializer, PopulationSerializer, PopulationDetailedSerializer, DepressionSerializer, HospitalNetworkSerializer, BedSerializer
 
 
