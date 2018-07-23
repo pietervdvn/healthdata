@@ -59,3 +59,10 @@ class Bed(models.Model):
     type = models.CharField(max_length= 20, null = True)
     amount = models.IntegerField()
     typeName = models.CharField(max_length = 500, null = True)
+
+class EquipmentDetailed(models.Model):
+    network = models.ForeignKey(HospitalNetwork, to_field="id", db_column="network_id", on_delete=models.CASCADE, null=True)
+    typeofequipment = models.CharField(max_length=600)
+    available = models.CharField(max_length=600)
+    year = models.IntegerField(null=True)
+    month = models.IntegerField(null=True)
