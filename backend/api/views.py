@@ -16,6 +16,18 @@ def isInt(value):
         return True
     except:
         return False
+def hospital_list(request):
+    hospitals = Hospital.objects.all()
+    serializer = HospitalSerializer(hospitals, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def hospital_detail(request, pk):
+    try:
+        hospital = Hospital.objects.get(pk=pk)
+    except Hospital.DoesNotExist:
+        raise Http404("Hospital not found")
+    serializer = HospitalSerializer(hospital)
+    return JsonResponse(serializer.data)
 
 def population_data(request):
     population = Population.objects.all()

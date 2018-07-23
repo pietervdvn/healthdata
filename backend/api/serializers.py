@@ -27,7 +27,7 @@ class HospitalNetworkSerializer(serializers.ModelSerializer):
         model = HospitalNetwork
         fields = ('id', 'name')
 
-class HospitalDetailSerializer(serializers.ModelSerializer):
+class HospitalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hospital
         fields = ('id', 'siteNbr', 'name', 'latitude', 'longitude', 'nbBeds', 'address', 'postalCode', 'town', 'telephone', 'website', 'province', 'type','network')
