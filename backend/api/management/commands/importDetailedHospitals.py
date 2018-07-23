@@ -5,12 +5,15 @@ import csv
 import xlrd
 
 from geopy.geocoders import Nominatim
+import geopy
 from bonobo.contrib.django import ETLCommand
 from api.models import Hospital, HospitalNetwork
 from django.conf import settings
 from datetime import date
 from api.utils import geocode
 
+geopy.geocoders.options.default_user_agent = 'healthstory-data-import'
+geopy.geocoders.options.default_timeout = 30
 def isInt(value):
     try:
         int(eval(str(value)))
