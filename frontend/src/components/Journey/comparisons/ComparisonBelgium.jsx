@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/journey/journey.css';
+import '../../../assets/css/journey/journey.css';
 
 class ComparisonBelgium extends React.Component {
 
@@ -36,3 +36,7 @@ class ComparisonBelgium extends React.Component {
 
 
 export default ComparisonBelgium;
+
+
+
+

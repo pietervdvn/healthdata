@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/journey/journey.css';
+import '../../../assets/css/journey/journey.css';
 
 class ComparisonProvince extends React.Component {
 
@@ -30,6 +30,10 @@ class ComparisonProvince extends React.Component {
             <div>
                 <div className="journey_content">
                     <h1>Comparison over provinces</h1>
+                    <p>
+                        -% of people with depression in the province
+                    </p>
+
                     <p>In {this.state.province}, {this.state.name} has <span className="red bold">{this.state.depressedPercentage}%</span> chances to meet another {this.state.age} years old, touched with depression. <br /> “x persons in blue with 100-x persons in white/red/whatever. In {this.state.province}, that’s [x*ProvincePop].</p>
                     {
                         this.state.listOfDummies.map(function (dummy) {
