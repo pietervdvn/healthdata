@@ -26,14 +26,14 @@ def find_excels():
             yield (match.group(0), match.group(1), match.group(2))
 
 
-def transform_excels_to_equipment_history(excel, month, year):     
+def transform_excels_to_equipment_history(excel, month, year):
     df = pd.read_excel(os.path.join(settings.BASE_DIR, 'api', 'source-data', 'hospitals', excel))
     df_new = df[df.columns[49:104]]
     df_new['ERK'] = df[['ERK']]
     df_new = df_new.iloc[3:]
     df_new.columns = [
-            'Medical imaging: CT', 'Magnetic resonance imaging (MRI)', 'Nuclear medicine with PET scanner', 'Radiotherapy', 'Dialysis centre', 'Transplantation centre', 'Human genetics centre', 'Severe burns centre', 'Care pathway for cardiac diseases A', 'Care pathway for cardiac diseases B3', 'Care pathway for cardiac diseases B1-B2', 'Care pathway for cardiac diseases C', 
-            'Care pathway for cardiac diseases E', 'Care pathway for cardiac diseases P', 
+            'Medical imaging: CT', 'Magnetic resonance imaging (MRI)', 'Nuclear medicine with PET scanner', 'Radiotherapy', 'Dialysis centre', 'Transplantation centre', 'Human genetics centre', 'Severe burns centre', 'Care pathway for cardiac diseases A', 'Care pathway for cardiac diseases B3', 'Care pathway for cardiac diseases B1-B2', 'Care pathway for cardiac diseases C',
+            'Care pathway for cardiac diseases E', 'Care pathway for cardiac diseases P',
             'Care pathway for cardiac diseases T',
             'Collaboration or association relating to care pathway for cardiac diseases',
             'Basic care pathway - stroke care',
@@ -63,7 +63,7 @@ def transform_excels_to_equipment_history(excel, month, year):
             'Local neonatal care (N*)',
             'Regional perinatal care (P*)',
             'Paediatric liaison',
-            'Emergency department - initial assessment', 
+            'Emergency department - initial assessment',
             'Emergency department - specialist care',
             'Emergency ambulance',
             'Association for emergency ambulance',
@@ -76,7 +76,7 @@ def transform_excels_to_equipment_history(excel, month, year):
             'Cystic fibrosis centre',
             'Clinical pathology department',
             'ERK'
-            ]    
+            ]
     df_new_shaped = pd.melt(df_new, id_vars='ERK', value_vars=df_new.columns[0:54])
     df_new_shaped['month']=np.repeat(month, df_new_shaped.shape[0])
     df_new_shaped['year']=np.repeat(year, df_new_shaped.shape[0])
@@ -110,12 +110,3 @@ class Command(ETLCommand):
             load_equipmentdetailed_data
         )
         return graph
-
-
-
-
-
-
-
-
-
