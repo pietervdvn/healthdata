@@ -8,14 +8,30 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value1: 27, //age
-      value2: "male", //gender
-      value3: "Brussels" //location
+      value1: 27, // age
+      value2: 'male', // gender
+      value3: 'Brussels' // location
     };
   }
 
   NextScreenAndSendData() {
     this.props.onClick(this.state.value1, this.state.value2, this.state.value3);
+  }
+
+  updateVal1(val) {
+    if (val <= 0 || val >= 121) this.setState({ value1: 27 });
+    else this.setState({ value1: val });
+  }
+
+  updateVal2(val) {
+    if (val == "null") this.setState({ value2: 'male' });
+    else this.setState({ value2: val });
+
+  }
+
+  updateVal3(val) {
+    if (val == "null") this.setState({ value3: 'Brussels' });
+    else this.setState({ value3: val });
   }
 
   render() {
@@ -28,10 +44,9 @@ class Questions extends React.Component {
               <p className="questionsExplenation">
                 Before we start, we just need you to fill in some simple questions.
                 Don't worry,
-              <span className="red bold"> this won't take long! </span>
-
+                <span className="red bold"> this won't take long! </span>
                 And it will make the journey much more personal ;)
-            </p>
+              </p>
               <div className="flex-container firsttwoQuestions">
                 <div>
                   <div>
@@ -53,13 +68,10 @@ class Questions extends React.Component {
                 </div>
               </div>
               <div className="thirdQuestion">
-                <label htmlFor="inp3">
-                  In what province do you live?
-                    </label>
+                <label htmlFor="inp3">In what province do you live?</label>
                 <br />
 
-
-                <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)} >
+                <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)}>
                   <option value="null">Won't say</option>
                   <option value="Antwerp">Antwerp</option>
                   <option value="East Flanders">East Flanders</option>
@@ -92,30 +104,6 @@ class Questions extends React.Component {
         </div>
       </div>
     );
-
-  }
-
-  updateVal1(val) {
-    if (val <= 0 || val >= 121)
-      this.setState({ value1: 27 });
-    else
-      this.setState({ value1: val });
-  }
-
-  updateVal2(val) {
-    if (val == "null")
-      this.setState({ value2: "male" });
-    else
-      this.setState({ value2: val });
-
-  }
-
-  updateVal3(val) {
-    if (val == "null") {
-      this.setState({ value3: "Brussels" });
-    }
-    else
-      this.setState({ value3: val });
   }
 
   // hideOrShowContinueButton() {
@@ -126,8 +114,6 @@ class Questions extends React.Component {
   //   else
   //     document.getElementById("continue_button").style.display = "none";
   // }
-
-
 }
 
 export default Questions;
