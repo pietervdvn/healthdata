@@ -42,22 +42,21 @@ class Questions extends React.Component {
             <div className="questionsContent">
               <h1>Hi there!</h1>
               <p className="questionsExplenation">
-                Before we start, we just need you to fill in some simple questions.
-                Don't worry,
-                <span className="red bold"> this won't take long! </span>
-                And it will make the journey much more personal ;)
+                Before we start, we just need you to answer some simple questions.
+                Don't worry, this won't take long!
+                And it will make the journey much more personal.
               </p>
               <div className="flex-container firsttwoQuestions">
                 <div>
                   <div>
-                    <label htmlFor="inp1">What's your age?</label>
+                    <label htmlFor="inp1">How old are you?</label>
                     <br />
-                    <input type="number" id="inp1" defaultValue="0" min="0" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
+                    <input type="number" id="inp1" defaultValue="0" min="15" max="120" onChange={(event) => this.updateVal1(event.target.value)} />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="inp2">
-                    What's your gender?
+                    What is your gender?
                   </label>
                   <br />
                   <select id="inp2" onChange={(event) => this.updateVal2(event.target.value)}>
@@ -68,11 +67,11 @@ class Questions extends React.Component {
                 </div>
               </div>
               <div className="thirdQuestion">
-                <label htmlFor="inp3">In what province do you live?</label>
+                <label htmlFor="inp3">In which Belgian province do you live?</label>
                 <br />
 
                 <select id="inp3" onChange={(event) => this.updateVal3(event.target.value)}>
-                  <option value="null">Won't say</option>
+                  <option value="null">I'd rather not say</option>
                   <option value="Antwerp">Antwerp</option>
                   <option value="East Flanders">East Flanders</option>
                   <option value="Flemish Brabant">Flemish Brabant</option>

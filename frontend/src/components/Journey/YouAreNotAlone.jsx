@@ -16,7 +16,7 @@ class YouAreNotAlone extends React.Component {
     return (
       <div>
         <div className="journey_content" style={{ textAlign: 'center' }}>
-          <h1>{this.state.name} is not alone, AND NEITHER ARE U!!</h1>
+          <h1>{this.props.name} is not alone, and neither are you.</h1>
           <p>
             “The American National Mental Health Association says that more than 80% of people who get treatment say it helps. If you stick with it, the odds are very good that you will feel better.”
           </p>

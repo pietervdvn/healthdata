@@ -45,7 +45,7 @@ class Journey extends React.Component {
       <div>
         <Navbar />
         {this.state.screenDisplayed === 1 && <Questions onClick={(age, gender, province) => this.receiveDataAndGoNext(age, gender, province)} />}
-        {this.state.screenDisplayed === 2 && <WhatIsDepression onClick={() => this.nextScreen()} />}
+        {this.state.screenDisplayed === 2 && <WhatIsDepression onClick={() => this.nextScreen()} name={this.state.name} age={this.state.age} province={this.state.province} gender={this.state.gender} />}
         {this.state.screenDisplayed === 3 && <Persona onClick={() => this.nextScreen()} age={this.state.age} name={this.state.name} province={this.state.province} gender={this.state.gender} />}
 
         {this.state.screenDisplayed === 4 && <ComparisonPerAgePerProvince onClick={() => this.nextScreen()} />}
