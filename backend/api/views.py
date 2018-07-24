@@ -6,8 +6,9 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.models import Hospital, Population, PopulationDetailed, Depression
-from api.serializers import HospitalSerializer, PopulationSerializer, PopulationDetailedSerializer, DepressionSerializer
+from api.models import Bed, Hospital, HospitalNetwork, Population, PopulationDetailed, Depression, Cancer
+from api.serializers import HospitalSerializer, HospitalNetworkSerializer, PopulationSerializer, PopulationDetailedSerializer
+from api.serializers import CancerSerializer, DepressionSerializer, HospitalNetworkSerializer, BedSerializer
 
 def isInt(value):
     try:
@@ -15,7 +16,6 @@ def isInt(value):
         return True
     except:
         return False
-
 def hospital_list(request):
     hospitals = Hospital.objects.all()
     serializer = HospitalSerializer(hospitals, many=True)
@@ -55,9 +55,29 @@ def populationDetailed_detail(request, pk):
     serializer = PopulationDetailedSerializer(population)
     return JsonResponse(serializer.data)
 
+def cancer_data(request):
+    population = Cancer.objects.all()
+    serializer = CancerSerializer(population, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def cancer_detail(request, pk):
+    try:
+        population = Cancer.objects.get(pk=pk)
+    except Cancer.DoesNotExist:
+        raise Http404("Populationdeatiled not found")
+    serializer = CancerSerializer(population)
+
 def depression_data(request):
-    population = Depression.objects.all()
-    serializer = DepressionSerializer(population, many=True)
+    data = Depression.objects.all()
+    if request.GET.get('year') is not None:
+        data = data.filter(year=int(request.GET.get('year')))
+    if request.GET.get('agegroup') is not None:
+        data = data.filter(agegroup=request.GET.get('agegroup')) # todo probably unsafe
+    if request.GET.get('province') is not None:
+        data = data.filter(province=request.GET.get('province')) # todo probably unsafe
+    if request.GET.get('gender') is not None:
+        data = data.filter(gender=request.GET.get('gender'))
+    serializer = DepressionSerializer(data, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 def depression_detail(request, pk):
@@ -67,3 +87,18 @@ def depression_detail(request, pk):
         raise Http404("Depression not found")
     serializer = DepressionSerializer(population)
     return JsonResponse(serializer.data)
+
+def hospitalNetwork_list(request):
+    networks = HospitalNetwork.objects.all()
+    serializer = HospitalNetworkSerializer(networks, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def beds_per_network(request, pk):
+    network = HospitalNetwork.objects.get(pk=pk)
+    beds = Bed.objects.filter(network=network)
+    if request.GET.get('year') is not None:
+        beds = beds.filter(year=int(request.GET.get('year'))) # todo probably unsafe
+    if request.GET.get('type') is not None:
+        beds = beds.filter(type=request.GET.get('type')) # todo probably unsafe
+    serializer = BedSerializer(beds, many=True)
+    return JsonResponse(serializer.data, safe=False)
