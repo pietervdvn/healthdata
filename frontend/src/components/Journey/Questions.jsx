@@ -58,14 +58,13 @@ class Questions extends React.Component {
                   <div>
                     <label htmlFor="inp1">What's your age?</label>
                     <br />
-                    {/* <input type="number" id="inp1" defaultValue="0" min="0" max="120" onChange={(event) => this.updateVal1(event.target.value)} /> */}
                     <select id="inp1" onChange={(event) => this.updateVal1(event.target.value)}>
                       <option value="15-24">15-24</option>
                       <option value="25-34">25-34</option>
                       <option value="35-44">35-44</option>
                       <option value="45-54">45-54</option>
                       <option value="65-74">65-74</option>
-                      <option value="75+">75+</option>
+                      <option value="75%2B">75+</option>
                       <option value="null">Won't say</option>
                     </select>
                   </div>

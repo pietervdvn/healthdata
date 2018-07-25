@@ -3,6 +3,7 @@ import '../../assets/css/journey/persona.css';
 
 class Persona1 extends React.Component {
 
+
     render() {
         return (
             <div>
@@ -40,7 +41,7 @@ class Persona1 extends React.Component {
             </div >
 
         )
-    }
+    }         
 }
 
 
