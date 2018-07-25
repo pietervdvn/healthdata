@@ -99,7 +99,8 @@ class ComparisonGenderPerProvince extends React.Component {
       <div>
         <div className="journey_content">
           <p>
-            In {this.props.province}, <span className="bold red"> {(this.state.valueF) ? this.state.valueF : "Loading "}%</span> of the women have those symptoms too, while <span className="bold red"> {(this.state.valueM) ? this.state.valueM : "Loading "}%</span> of men do.
+          <span className="bold red"> {(this.state.valueF) ? this.state.valueF : "Loading "}%</span> of women living in <span className="capitalize">{this.props.province}</span> have the same symptoms, while <span className="bold red"> {(this.state.valueF) ? this.state.valueF : "Loading "}%</span> of men living in <span className="capitalize">{this.props.province}</span> experience those symptoms.
+            {/* In {this.props.province}, <span className="bold red"> {(this.state.valueF) ? this.state.valueF : "Loading "}%</span> of the women have those symptoms too, while <span className="bold red"> {(this.state.valueM) ? this.state.valueM : "Loading "}%</span> of men do. */}
           </p>
           <p>
             Year female data: {this.state.dataFromYearF} <br />

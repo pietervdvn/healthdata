@@ -63,8 +63,10 @@ class ComparisonPerAgePerProvince extends React.Component {
         <div className="journey_content">
           <h1>Comparison per age per province</h1>
           <p>
-            What {this.props.name} does not know, is that many people around {this.props.gender == "male" ? "him" : "her"} also suffer from with current symptoms of a depressive disorder.
-            In {this.props.province}, {this.state.value}% of the population from {this.props.name}'s age group have symptoms of a depressive disorder.
+            {this.props.name} might feel alone, but what {this.props.gender == "male" ? "he" : "she"} doesn't know is that many people around {this.props.gender == "him" ? "he" : "him"} suffer from dysthymia and have similar syptoms.
+              In <span className="capitalize">{this.props.processData}</span>, {this.props.value}% of the population from {this.props.name}'s age group have similar symptoms.
+            {/* What {this.props.name} does not know, is that many people around {this.props.gender == "male" ? "him" : "her"} also suffer from with current symptoms of a depressive disorder.
+            In {this.props.province}, {this.state.value}% of the population from {this.props.name}'s age group have symptoms of a depressive disorder. */}
           </p>
           <p>Data is from: {this.state.dataFromYear}</p>
           <p>{this.state.value == "" ? "1" : <CompVisualization percent={this.state.value} />}</p>

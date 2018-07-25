@@ -23,11 +23,14 @@ class Persona2 extends React.Component {
               <h1><span className="redUnderline">{this.state.name}</span> feels unwell</h1>
 
               <p className="justify">
-                For some years now, {this.props.name} has had a strange feeling. {this.state.isMale ? 'He' : 'She'} cannot explain why {this.state.isMale ? 'he' : 'she'} feels that way. Most of the time, {this.state.isMale ? 'he' : 'she'} can hardly sleep, has little energy, low self-esteem and does not eat much.
+              {this.props.name} started to feel different a few years ago. {this.state.isMale ? 'He' : 'She'} can't explain why he feels that way. {this.state.name} has a hard time sleeping, {this.state.isMale ? 'he' : 'she'} has little energy, low self-esteem and lost his appetite.
+                {/* For some years now, {this.props.name} has had a strange feeling. {this.state.isMale ? 'He' : 'She'} cannot explain why {this.state.isMale ? 'he' : 'she'} feels that way. Most of the time, {this.state.isMale ? 'he' : 'she'} can hardly sleep, has little energy, low self-esteem and does not eat much. */}
               </p>
+
               <p>{this.props.name} suffers from <span className="red bold">dysthymia</span>.</p>
               <p className="justify">
-                {this.props.name}'s state deteriorated over time before {this.state.isMale ? 'he' : 'she'} felt as {this.state.isMale ? 'he' : 'she'} does today. When this feeling started occuring, {this.state.isMale ? 'he' : 'she'} thought it would not last, so {this.state.isMale ? 'he' : 'she'} did not complain about it.
+                After a while, {this.props.name} started feeling worse. Although {this.state.isMale ? 'he' : 'she'} didn't like this feeling, {this.state.isMale ? 'he' : 'she'} thought it wouldn't last and didn't talk or complain about it.
+                {/* 's state deteriorated over time before {this.state.isMale ? 'he' : 'she'} felt as {this.state.isMale ? 'he' : 'she'} does today. When this feeling started occuring, {this.state.isMale ? 'he' : 'she'} thought it would not last, so {this.state.isMale ? 'he' : 'she'} did not complain about it. */}
               </p>
               <p className="red bold">
                 Is that really the case?

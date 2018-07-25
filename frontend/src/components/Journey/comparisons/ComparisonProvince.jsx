@@ -65,7 +65,8 @@ class ComparisonProvince extends React.Component {
                 <div className="journey_content">
                     <h1>Comparison over your province</h1>
                     <p>
-                        In the whole province, that is <span className="red bold">{this.state.value}%</span> of people.
+                        That is <span className="red bold">{this.state.value}%</span> of the people living in the provence.
+                        {/* In the whole province, that is <span className="red bold">{this.state.value}%</span> of people. */}
                     </p>
                     <p>{this.state.value == "" ? "1" : <CompVisualization percent={this.state.value} />}</p>
                     <p>Year: {this.state.dataFromYear}</p>
