@@ -35,6 +35,7 @@ class Persona1 extends React.Component {
                                 </p>
                             </p>
                         </div>
+    
                     </div>
                 </div>
             </div >
