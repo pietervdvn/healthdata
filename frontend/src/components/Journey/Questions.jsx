@@ -111,7 +111,7 @@ class Questions extends React.Component {
 
           </div>
           <div className="questionsRight">
-            <div className="Jonathan"></div>
+            <div className="welcome"></div>
           </div>
         </div>
       </div>

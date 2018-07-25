@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/css/journey/youAreNotAlone.css';
-import personaImg from '../../assets/images/Jonathan.jpg';
+import personaImg from '../../assets/images/HappyJohn.png';
 
 
 class YouAreNotAlone extends React.Component {
@@ -18,7 +18,7 @@ class YouAreNotAlone extends React.Component {
     return (
       <div className="flex-container">
         <div className="notAloneBg">
-          <img src={personaImg} alt="img of logo" />
+          <img src={personaImg} alt="img of logo" width="100%" height="100%"/>
         </div>
         <div>
           <div className="notAloneContent">

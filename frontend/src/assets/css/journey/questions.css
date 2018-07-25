@@ -72,10 +72,12 @@ select {
     text-align: justify;
 }
 
-.Jonathan {
-    content: url(../../images/Jonathan.jpg);
-    width: 100%;
-    height: 700px;
+.welcome {
+    content: url(../../images/welcome.png);
+    max-width: 60%;
+    height: auto;
+    width: auto\9; /* ie8 */
+    /* background: #ff6464; */
 }
 
 .smallblack{
