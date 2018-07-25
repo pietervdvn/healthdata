@@ -24,3 +24,34 @@
 /* .personaDiagnosis {
     line-height: 4;
 } */
+
+
+.Jonathan {
+    content: url(../../images/Jonathan.jpg);
+    width: 100%;
+    height: 700px;
+}
+
+.central{
+    text-align: center;
+}
+
+.littlefont{
+    text-align: center;
+    font-size: 9pt;
+    color: black;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.middlefont{
+    font-size: 10pt;
+    color: black;
+    line-height: 25px;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.bold{
+    font-weight: 900;
+}
